@@ -90,24 +90,30 @@ namespace lab1.Controllers
         [HttpPost]
         public IActionResult Login(LoginViewModel logedStudent)
         {
-            var student = _db.login(logedStudent);
-            if (student != null)
-            {
-                CookieOptions options = new CookieOptions();
-                Response.Cookies.Append("stid", student.StudentId.ToString());
-
-
-                foreach (var role in student.StudentRoles)
+            if (ModelState.IsValid) { 
+                var student = _db.login(logedStudent);
+                if (student != null)
                 {
-                    if (role.RoleId == 1)
+                    CookieOptions options = new CookieOptions();
+                    Response.Cookies.Append("stid", student.StudentId.ToString());
+
+
+                    foreach (var role in student.StudentRoles)
                     {
-                        //  options.Expires = DateTime.Now.AddDays(1);
-                        return RedirectToAction("Home", "Admin", new { id = student.StudentId });
+                        if (role.RoleId == 1)
+                        {
+                            //  options.Expires = DateTime.Now.AddDays(1);
+                            return RedirectToAction("Home", "Admin", new { id = student.StudentId });
+                        }
                     }
+                    return RedirectToAction("Details", new { id = student.StudentId });
+
+
                 }
-                return RedirectToAction("Details", new { id = student.StudentId });
-
-
+                else
+                {
+                    return View();
+                }
             }
             else
             {
