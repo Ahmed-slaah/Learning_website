@@ -1,0 +1,26 @@
+﻿@using lab1.Models
+@model IEnumerable<Topic>
+@{
+    ViewData["Title"] = "AddTopic";
+}
+<link href="~/css/CreateCourse.css" rel="stylesheet" />
+<div>
+    <h3 style="margin-bottom:45px;">Select Course Topic</h3>
+    <div class="container">
+        <form asp-action="AddTopic" asp-controller="Course" method="post">
+            <div class="form-input topics-container">
+                @foreach (var topic in Model)
+                {
+                    <div class="form-check">
+                        @Html.CheckBox("topics." + topic.TopicId)
+                        <label class="badge badge-light check-box-label" for="inlineRadio1">@topic.Name</label>
+                    </div>
+
+                }
+                <input type="submit" class="btn Details-btn" value="Select" />
+                <a class="login-btn" style="color: #007b5e;" asp-action="Home" asp-controller="Student" asp-route-id="@ViewBag.Stid">Cancel</a>
+                <!-- @Html.ActionLink("Cancel", "Home", "Student", new {id= ViewBag.Stid }, new { @class = "login-btn" }) -->
+            </div>
+        </form>
+    </div>
+</div>

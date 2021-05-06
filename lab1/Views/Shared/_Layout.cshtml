@@ -1,0 +1,41 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="~/css/navbar.css" rel="stylesheet" />
+</head>
+<body> 
+    <div class="header">
+        <img src="~/images/logo2.png">
+        <div class="links-container">
+            <!-- <div id="login-btns"> -->
+            <a asp-action="Home" asp-controller="Student">Home</a>
+            <a asp-action="Details" asp-controller="Student" >profile</a>
+            <!-- </div> -->
+            <a asp-action="Login" asp-controller="Student" id="login-a">Sign</a>
+        </div>
+    </div>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <script>
+        let header = document.querySelector('.header');
+        let anchors = document.querySelector('.header .links-container a');
+
+        window.addEventListener('scroll', () => {
+            window.scrollY > 100 ? header.classList.add('active') : header.classList.remove('active');
+            window.scrollY > 100 ? anchors.classList.add('active') : anchors.classList.remove('active');
+        })
+    </script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

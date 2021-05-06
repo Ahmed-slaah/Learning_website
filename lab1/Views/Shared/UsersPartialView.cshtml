@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Student>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<div class="usersContainer">
+    @foreach (var student in Model)
+    {
+
+
+        <div class="user-card">
+            @if (student.ProfileImg != null)
+            {
+                <img src="~/images/@student.ProfileImg" alt="..." width="130" class="rounded mb-2 img-thumbnail">
+            }
+            else
+            {
+                if (student.gender == "Male")
+                {
+                    <img src="~/images/default-male.jpg" alt="..." width="130" class="rounded mb-2 img-thumbnail">
+
+                }
+                else if (student.gender == "Female")
+                {
+                    <img src="~/images/default-female.png" alt="..." width="130" class="rounded mb-2 img-thumbnail">
+                }
+                else
+                {
+                    <img src="~/images/default-male.jpg" alt="..." width="130" class="rounded mb-2 img-thumbnail">
+                }
+            }
+
+            <div class="user-data ">
+                <p class="text-justify">@student.FirstName @student.LastName</p>
+                <p class="text-justify">@student.Email</p>
+                <p class="text-justify">@student.Age</p>
+                <div class="action-btns">
+                    <button class="Details-btn" onclick="ajaxCall(@student.StudentId)">Details</button>
+                    <a class="Delete-btn" asp-action="DeleteStudent" asp-controller="Admin" asp-route-id="@student.StudentId">Delete</a>
+
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script>
+
+        function ajaxCall(id) {
+            $.ajax({
+                url: `/Admin/StudentDetails/${id}`,
+                success: renderResult,
+                complete: showModal,
+                error: console.log
+            })
+        }
+        function renderResult(result) {
+            $("#modal-render").html(result)
+        }
+        function showModal() {
+            $('#exampleModal').modal("show");
+        }
+    </script>
+
+

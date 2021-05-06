@@ -1,0 +1,68 @@
+﻿@using lab1.Models
+@model Course
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+    <link href="~/css/owl.carousel.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- single course section -->
+    <section class="single-course spad pb-0">
+        <div class="container">
+            <div class="course-meta-area">
+                <div class="row">
+                    <div class="col-lg-10 offset-lg-1">
+                        <div class="course-note">Featured Course</div>
+                        <h3>@Model.Name</h3>
+                        <div class="course-metas">
+                            <div class="course-meta">
+                                <div class="cm-info">
+                                    <h6>Categories</h6>
+                                    @foreach (var topic in ViewBag.topics)
+                                    {
+                                        <p>@topic.Name </p>
+                                    }
+                                </div>
+                            </div>
+                            <div class="course-meta">
+                                <div class="cm-info">
+                                    <h6>Duration</h6>
+                                    <p>@Model.Hours</p>
+                                </div>
+                            </div>
+                            <div class="course-meta">
+                                <div class="cm-info">
+                                    <h6>Students</h6>
+                                    <p>@ViewBag.count Registered Students</p>
+                                </div>
+                            </div>
+                            <div class="course-meta">
+                                <div class="cm-info">
+                                    <h6>By/</h6>
+                                    <p>@Model.authName</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="site-btn price-btn">Price:  <span style="text-decoration:line-through;"> &nbsp;$ @Model.Cost &nbsp;</span></p>
+                    </div>
+                </div>
+            </div>
+            <img src="~/images/single.jpg" alt="" class="course-preview">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1 course-list">
+                    <div class="cl-item">
+                        <h4>Course Description</h4>
+                        <p>@Model.Description. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- single course section end -->
+</body>
+</html>

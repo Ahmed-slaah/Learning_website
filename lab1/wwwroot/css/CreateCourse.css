@@ -1,0 +1,46 @@
+﻿.container {
+    align-content: center;
+    color: #007b5e;
+    margin:0 auto;
+}
+.topics-container {
+    margin-top: 25px;
+}
+
+.check-box-label {
+    height: 31px;
+    padding: 10px;
+    color: #007b5e;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight:400;
+    font-size:17px;
+}
+.checkbox:checked:before {
+    background-color: #007b5e !important;
+}
+.form-check-input {
+    position: absolute;
+    margin-top: 1rem !important;
+    margin-left: -2.25rem !important;
+}
+.Details-btn {
+    width: 50%;
+    height: 40px;
+    text-align: center;
+    background-color: #007b5e;
+    color: white;
+}
+    .Details-btn:hover {
+        color: white;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+    .edit-btn {
+    color: #007b5e;
+}
+
+    .edit-btn:hover {
+        cursor:pointer;
+        text-decoration:underline;
+    }

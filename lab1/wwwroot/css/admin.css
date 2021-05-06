@@ -1,0 +1,296 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    background-color: #fcfffc;
+}
+
+.container {
+    /* display: flex; */
+    height: 100vh;
+    margin-top: -56px;
+}
+a:hover{
+    cursor:pointer;
+}
+
+.Details-btn {
+    width: 80px;
+    min-height: 21px;
+    text-align: center;
+    background-color: #007b5e;
+    color: white;
+    align-items: center;
+    vertical-align: middle;
+    padding: 10px;
+    line-height: 1.5;
+    border: none;
+    text-decoration: none;
+}
+
+.Delete-btn {
+    width: 80px;
+    min-height: 21px;
+    text-align: center;
+    color: white;
+    background-color: darkred;
+    align-items: center;
+    vertical-align: middle;
+    padding: 10px;
+    line-height: 1.5;
+    border:none;
+    text-decoration:none;
+}
+/* start left*/
+.left {
+    width: 20%;
+    height: 100vh;
+    background: rgb(122,237,126);
+    background: linear-gradient(90deg, rgba(122,237,126,1) 7%, rgba(122,237,126,1) 48%, rgba(143,218,144,1) 95%);
+    align-items: center;
+    text-align: center;
+    position: fixed;
+    left: 0;
+}
+
+    .left .admin-data {
+        margin-top: 15px;
+    }
+
+        .left .admin-data .admin-name {
+            background-color: #fcfffc;
+            height: 40px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+.admin-name p {
+    padding-top: 10px;
+    font-size: 17px;
+    font-weight: bold;
+    color: #2fd4ae;
+}
+
+.admin-data img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.left .admin-actions {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.admin-actions .btn-container {
+    margin-top: 10px;
+}
+
+
+    .admin-actions .btn-container button {
+        width: 100%;
+        height: 40px;
+        background: rgb(122,237,126);
+        background: linear-gradient(90deg, rgba(122,237,126,1) 7%, rgba(122,237,126,1) 48%, rgba(143,218,144,1) 95%);
+        color: #fcfffc;
+        border: 1px solid rgb(122,237,126);
+        font-size: 17px;
+        font-weight: 400;
+        text-align: left;
+        padding-left: 15px;
+    }
+
+        .admin-actions .btn-container button:hover {
+            background: rgb(122,237,126);
+            background: linear-gradient(90deg,rgba(143,218,144,1) 95%,rgba(122,237,126,1) 48%,rgba(122,237,126,1) 7%);
+            cursor: pointer;
+        }
+    .admin-actions .btn-container .anchor-btn {
+        width: 100%;
+        height: 40px;
+        background: rgb(122,237,126);
+        background: linear-gradient(90deg, rgba(122,237,126,1) 7%, rgba(122,237,126,1) 48%, rgba(143,218,144,1) 95%);
+        border: 1px solid rgb(122,237,126);
+        color: #fcfffc;
+        font-size: 17px;
+        font-weight: 400;
+        text-align: left;
+        padding-left: 15px;
+        text-decoration: none;
+    }
+/* end left*/
+/* start right*/
+.right {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5%;
+    width: 100%;
+    margin-top: 5%;
+    margin-left: 18%;
+    padding-top: 10%;
+}
+
+    .right .card {
+        margin: 0;
+        width: 35%;
+        background-color: #fff;
+        min-height: 200px;
+        box-shadow: 0 0 5px rgb(0 0 0 / 40%);
+        margin-bottom: 20px;
+    }
+
+.card .card-title {
+    height: 20%;
+    margin-top: -16px;
+}
+
+    .card .card-title p {
+        color: #fcfffc;
+        font-weight: bold;
+        font-size: 22px;
+        margin-top: 10px;
+        background: rgb(122,237,126);
+        background: linear-gradient(90deg, rgba(122,237,126,1) 7%, rgba(122,237,126,1) 48%, rgba(143,218,144,1) 95%);
+        text-align: center;
+        padding: 10px;
+    }
+
+.card .card-content {
+    margin: 0 auto;
+    text-align: center;
+}
+
+    .card .card-content p {
+        color: #2fd4ae;
+        font-weight: bolder;
+        font-size: 70px;
+    }
+
+        .card .card-content p span {
+            color: #2fd4ae;
+            font-weight: lighter;
+            font-size: 18px;
+        }
+/* end right*/
+/*user card*/
+.right .usersContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.user-card {
+    display: flex;
+    height: 200px;
+    width: 47%;
+    gap: 15px;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgb(0 0 0 / 40%);
+}
+
+    .user-card img {
+        width: 30%;
+        height: 100%;
+    }
+
+    .user-card .user-data {
+        padding: 8px;
+    }
+
+        .user-card .user-data p {
+            font-size: 17px;
+            font-weight: 500;
+            color: #2fd4ae;
+            font-size: 20px;
+            font-weight: 500;
+        }
+.user-data .action-btns{
+        display:flex;
+        gap:30px;
+}
+/**
+    waiting courses
+*/
+.right .WaitingCoursesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.waitingCourse-card {
+    display: flex;
+    min-height: 185px;
+    width: 70%;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgb(0 0 0 / 40%);
+    justify-content: space-between;
+    margin: auto;
+}
+
+    .waitingCourse-card img {
+        width: 35%;
+        height: 185px;
+    }
+
+    .waitingCourse-card .course-data {
+        padding: 8px;
+    }
+
+        .waitingCourse-card .course-data p {
+            font-size: 17px;
+            font-weight: 500;
+            margin: 8px;
+            color: #2fd4ae;
+            font-size: 20px;
+            font-weight: 500;
+            padding-top: 8px;
+        }
+
+    .waitingCourse-card .action-btns {
+        margin-top: 5%;
+        margin-right: 27px;
+        width: 26%;
+    }
+
+    .waitingCourse-card .Details-btn {
+        width: 80%;
+        min-height: 27%;
+        text-align: center;
+        background-color: #007b5e;
+        color: white;
+        align-items: center;
+        vertical-align: middle;
+        padding: 10px;
+        line-height: 1.5;
+        display: block;
+        margin: 10px;
+    }
+
+    .waitingCourse-card .Delete-btn {
+        width: 80%;
+        min-height: 27%;
+        text-align: center;
+        color: white;
+        background-color: darkred;
+        align-items: center;
+        vertical-align: middle;
+        padding: 10px;
+        line-height: 1.5;
+        display: block;
+        margin: 10px;
+    }
+.close-btn {
+    background-color: #fff;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 25px;
+    text-align:center;
+    margin-top: 20px;
+    border: none;
+}
+    .close-btn:hover {
+        cursor: pointer;
+        background-color: #007b5e ;
+        color:#fff;
+    }

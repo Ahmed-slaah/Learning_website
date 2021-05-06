@@ -1,0 +1,24 @@
+﻿@using lab1.Models
+@model IEnumerable<waitingCourses>
+
+<div class="WaitingCoursesContainer">
+    @foreach (var course in Model)
+    {
+
+
+        <div class="waitingCourse-card">
+            <img src="~/images/single.jpg" alt="..." width="130" class="rounded mb-2 img-thumbnail">
+            <div class="course-data ">
+                <p class="text-justify">@course.Name</p>
+                <p class="text-justify">@course.Hours hour</p>
+                <p class="text-justify">$ @course.Cost</p>
+                <p class="text-justify">By/ @course.authName</p>
+            </div>
+            <div class="action-btns">
+                <a class="Details-btn" asp-action="acceptCourse" asp-controller="Admin" asp-route-id="@course.CourseID" >accept</a>
+                <br />
+                <a class="Delete-btn" asp-action="rejectCourse" asp-controller="Admin" asp-route-id="@course.CourseID">reject</a>
+            </div>
+        </div>
+    }
+</div>

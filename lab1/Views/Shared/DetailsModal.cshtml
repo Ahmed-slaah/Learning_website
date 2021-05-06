@@ -1,0 +1,109 @@
+﻿@using lab1.Models
+@model Student
+
+<link href="~/css/detailsModal.css" rel="stylesheet" />
+<div class="col-md-12 row gutters-sm" style="margin-left:auto;">
+    <div class="col-md-6 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex flex-column align-items-center text-center">
+                    @if (Model.ProfileImg != null)
+                    {
+                        <img src="~/images/@Model.ProfileImg" alt="ProfolePic" width="190" style="border-radius:50%;">
+
+                    }
+                    else
+                    {
+                        if (Model.gender == "Male")
+                        {
+                            <img src="~/images/default-male.jpg" alt="ProfolePic" width="190" style="border-radius:50%;">
+
+
+                        }
+                        else if (Model.gender == "Female")
+                        {
+                            <img src="~/images/default-female.png" alt="ProfolePic" width="190" style="border-radius:50%;">
+
+                        }
+                        else
+                        {
+                            <img src="~/images/@Model.ProfileImg" alt="ProfolePic" width="190" style="border-radius:50%;">
+
+                        }
+                    }
+                    <div class="mt-3">
+                        <h4>@Model.FirstName @Model.LastName</h4>
+                        <p class="text-muted font-size-sm">@Model.Country , @Model.City</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="col-md-12">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h4 class="mb-0">Full Name</h4>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            <h5>@Model.FirstName @Model.LastName</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="col-md-12">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h4 class="mb-0">Email</h4>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            <h5>@Model.Email</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="col-md-12">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h4 class="mb-0">Age</h4>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            <h5>@Model.Age</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="col-md-12">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h4 class="mb-0">Gender</h4>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            <h5>@Model.gender</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+@section scripts{
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+}

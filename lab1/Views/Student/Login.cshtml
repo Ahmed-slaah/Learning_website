@@ -1,0 +1,53 @@
+﻿@using lab1.Models
+@model Student
+@{
+    ViewData["Title"] = "Login";
+}
+
+    <link href="~/css/all.min.css" rel="stylesheet" />
+    <link href="~/css/Register.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f0f2f5;
+        }
+    </style>
+    <body>
+        <div>
+            <div class="card-body">
+                @using (Html.BeginForm("Login", "Student", FormMethod.Post))
+                {
+                    <div asp-validation-summary="ModelOnly"></div>
+                    <div class="container">
+                        <h4>
+                            Sign Up and Start Learning!
+                        </h4>
+                        <div class="form-group">
+                            <input asp-for="Email" type="email" class="form-control" placeholder="Email">
+                        </div>
+
+
+                        <div class="form-group">
+                            <input asp-for="Password" type="password" class="form-control" placeholder="password">
+                        </div>
+
+                        <input type="submit" id="login" class="btn Details-btn" value="Login" />
+                        @Html.ActionLink("Don't have account ?", "Register", "Student", null, new { @class = "login-btn" })
+                    </div>
+
+                }
+            </div>
+        </div>
+    </body>
+
+
+
+@*@section scripts{ 
+<script>
+    var login = document.querySelector('#login-btns');
+    var loginbtn = document.querySelector('#login');
+    loginbtn.addEventListener('click', () => {
+        login.style.display="block"
+    })
+
+</script>
+}*@

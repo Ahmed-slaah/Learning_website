@@ -1,0 +1,137 @@
+﻿@using lab1.Models
+@model IEnumerable<Course>
+@{
+    ViewData["Title"] = "Home";
+}
+<link href="~/css/assets.css" rel="stylesheet" />
+<link href="~/css/typography.css" rel="stylesheet" />
+<link href="~/css/shortcodes/shortcodes.css" rel="stylesheet" />
+<style>
+    body {
+        background-color: #f0f2f5;
+    }
+</style>
+
+    <div class="page-wraper" style="margin-top:30px">
+
+        <div class="page-content bg-white">
+            <!-- inner page banner -->
+            
+            <div class="content-block">
+                <div class="section-area section-sp1">
+                    <div class="container">
+                        <div class="row">
+                            <!-- left part start -->
+                            
+                            <div class="col-lg-8 col-xl-8 col-md-7">
+
+                                
+
+                                    <!-- blog grid -->
+                                <div id="masonry" class="ttr-blog-grid-3 row" style="background-color: #f0f2f5">
+                                    <partial name="~/Views/Shared/CourseListPartialView.cshtml"  />
+                                </div>
+                                    <!-- blog grid END -->
+                            </div>
+                            
+                            <!-- left part END -->
+                            <!-- Side bar start -->
+                            <div class="col-lg-4 col-xl-4 col-md-5 sticky-top" style="top:50px">
+                                <aside class="side-bar sticky-top" style="top:50px">
+                                    <div class="widget" >
+                                        <h6 class="widget-title">Search</h6>
+                                        <div class="search-bx style-1">
+
+                                            <form asp-action="searchCourseName" asp-controller="Course" asp-route-stid="@ViewBag.stId" role="search" method="post">
+                                                <div class="input-group">
+                                                    <input id="courseName" name="name" style="color: #007b5e;" class="form-control" placeholder="Enter your keywords..." type="text">
+                                                    <span class="input-group-btn">
+                                                        <button onclick="getCoursesByName()" type="button" style="background-color: #007b5e; color:white;">Find</button>
+                                                    </span>
+                                                </div>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                    <div class="widget recent-posts-entry">
+                                        <h6 style="color: #007b5e;" class="widget-title">Recent Courses</h6>
+                                        <div class="widget-post-bx">
+                                            <div class="widget-post clearfix">
+                                                <div class="ttr-post-media"> <img src="~/images/single.jpg" width="200" height="160" alt=""> </div>
+                                                <div class="ttr-post-info">
+                                                    <div class="ttr-post-header">
+                                                        <h6 class="post-title"><a style="color: #007b5e;" asp-action="Details" asp-controller="Course" asp-route-id="@ViewBag.recentCourses.CourseID" asp-route-stId="@ViewBag.stId">@ViewBag.recentCourses.Name</a></h6>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="widget widget_tag_cloud ">
+                                        <h6 class="widget-title" style="color: #007b5e;">Categories</h6>
+                                        <div class="tagcloud tags">
+
+                                            @foreach (var t in ViewBag.AllTopics)
+                                            {
+                                                <button class="tagbtn" onclick="getCoursesByTagName(this)">@t.Name</button>
+
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="widget widget_tag_cloud ">
+                                        <h6 class="widget-title" style="color: #007b5e;">Add course</h6>
+                                        <div class="tagcloud tags">
+                                            <a asp-action="CreateCourse" asp-controller="Course" asp-route-stid="@ViewBag.stid" >Create</a>
+                                        </div>
+                                    </div>
+                                </aside>
+                            </div>
+                            <!-- Side bar END -->
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+@section Scripts{ 
+
+    <script>
+
+        function getData(searchText,url) {
+            $.ajax({
+                url: url,
+                method: 'POST',
+                data: searchText,
+                success: renderSearchResult,
+                error: console.log
+        })
+        }
+
+    function getCoursesByName() {
+        var name = $("#courseName").val();
+        var url = `/Course/searchCourseName/${@ViewBag.stId}`
+        getData({ name }, url)
+
+        }
+        
+        function getCoursesByTagName(target) {
+            var tagName = target.innerText;
+            var url = `/Course/searchTagName/${@ViewBag.stId}`
+            getData({ tagName }, url)
+        }
+
+        function renderSearchResult(result) {
+            $("#masonry").html(result)
+        }
+    </script>
+
+
+}
+

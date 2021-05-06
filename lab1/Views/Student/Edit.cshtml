@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewData["Title"] = "Edit";
+}
+
+@using lab1.Models
+@model Student
+
+<link href="~/css/all.min.css" rel="stylesheet" />
+<link href="~/css/Register.css" rel="stylesheet" />
+<body>
+    <div>
+        <div class="card-body">
+            @using (Html.BeginForm("Edit", "Student", FormMethod.Post))
+            {
+
+                <div asp-validation-summary="ModelOnly"></div>
+                <div class="container">
+                    <h4>
+                        Sign Up and Start Learning!
+                    </h4>
+                    <div class="row">
+                        <div class="col">
+                           
+                        <input asp-for="StudentId" class="form-control" placeholder="id" type="hidden"/>
+                        <input asp-for="FirstName" class="form-control" placeholder="First name" />
+                        </div>
+                        <div class="col">
+                            <input asp-for="LastName" class="form-control" placeholder="Last name" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input asp-for="Email" type="email" class="form-control" placeholder="Email">
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <input asp-for="Country" class="form-control" placeholder="Country" />
+                        </div>
+                        <div class="col">
+                            <input asp-for="City" class="form-control" placeholder="City" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <select asp-for="gender" class="form-control">
+                                <option value="">Choose Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                            <span asp-validation-for="gender" class="text-danger"></span>
+                        </div>
+                        <div class="col">
+                            <input asp-for="Age" class="form-control" placeholder="Age" />
+                            <span asp-validation-for="Age" class="text-danger"></span>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="Password" type="password" class="form-control" placeholder="password">
+                    </div>
+
+                    <input type="submit" class="btn Details-btn" value="Done" />
+                    @Html.ActionLink("Cancel", "Details", "Student", new { id = Model.StudentId }, new { @class = "login-btn" })
+                </div>
+            }
+        </div>
+    </div>
+</body>
+
+
+
+
+

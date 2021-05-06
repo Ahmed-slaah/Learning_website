@@ -1,0 +1,60 @@
+﻿
+.card-body {
+    flex: 1 1 auto;
+    padding: 1.25rem;
+    width: 40% !important;
+    margin-left: 30% !important;
+    margin-top: 10% !important;
+}
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    margin-bottom: 5px!important;
+    margin-top: 5px!important;
+}
+.form-group {
+    margin-bottom: 16px !important;
+    margin-top: 16px !important;
+}
+.Details-btn {
+    width: 50%;
+    height: 40px;
+    text-align: center;
+    background-color: #007b5e;
+    color: white;
+}
+.login-btn {
+    text-align: center;
+    background-color: #f0f2f5;
+    color: #007b5e;
+    margin-left: 2%;
+    border: none;
+}
+    .login-btn:hover {
+        color: lightblue;
+    }
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #007b5e !important;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #e3efe9;
+    border-radius: .25rem;
+    transition: border-color .15s cubic-bezier(0.03, 1.1, 0.68, -0.15),box-shadow .15s ease-in-out;
+}
+    .form-control:focus {
+        outline: #D7FAD1 solid 4px !important;
+        border: none;
+    }

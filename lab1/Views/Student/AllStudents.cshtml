@@ -1,0 +1,73 @@
+﻿@using lab1.Models
+@model IEnumerable<Student>
+
+
+
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<link href="~/css/StudentCard.css" rel="stylesheet" />
+<body>
+    <section id="team" class="pb-5">
+        <div class="container">
+            <h5 class="section-title h1">OUR TEAM</h5>
+            <div class="row">
+                <!-- Team member -->
+                @foreach (var student in Model)
+                {
+
+
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="image-flip">
+                            <div class="mainflip flip-0">
+                                <div class="frontside">
+                                    <div class="card">
+                                        <div class="card-body text-center">
+                                            <p><img class=" img-fluid" src="https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_01.png" alt="card image"></p>
+                                            <h4 class="card-title">@student.FirstName @student.LastName</h4>
+                                            <p class="card-text">@student.Country, @student.City</p>
+                                            <p class="card-text">@student.Email</p>
+                                            <div class="card-footer row">
+                                                @Html.ActionLink("Details", "Details", "Student", new { id = student.StudentId },new {@class="btn Details-btn" })
+                                                @Html.ActionLink("Delete", "Delete", "Student", new { id = student.StudentId }, new { @class = "btn Delete-btn" })
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end-->
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="xxx">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showModal() {
+            $('#exampleModal').modal("show");
+        }
+    </script>
+</body>

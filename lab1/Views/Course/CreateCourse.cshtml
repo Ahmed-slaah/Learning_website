@@ -1,0 +1,47 @@
+﻿@using lab1.Models
+@model Course;
+@{
+    ViewData["Title"] = "CreateCourse";
+}
+<link href="~/css/CreateCourse.css" rel="stylesheet" />
+
+
+<body>
+    
+    <h2 class="b dark">Create New Course</h2>
+    <form asp-action="CreateCourse" asp-controller="Course" method="post">
+        <div class="form-input" style="margin-bottom:15px;">
+            <input asp-for="Name" class="form-control" formControlName="title" type="text" placeholder="Enter Course name">
+        </div>
+
+        <div class="form-input" style="margin-bottom:15px;">
+            <textarea asp-for="Description" class="form-control" rows="10" formControlName="body" placeholder="Enter Course description"></textarea>
+        </div>
+        <div class="row" style="margin-bottom:15px;">
+            <div class="col">
+                <input asp-for="Hours" class="form-control" placeholder="Hours" />
+                <span asp-validation-for="Hours" class="text-danger"></span>
+            </div>
+            <div class="col">
+                <input asp-for="Cost" class="form-control" placeholder="Cost$" />
+                <span asp-validation-for="Cost" class="text-danger"></span>
+            </div>
+        </div>
+        <!--
+
+
+    <div class="form-group" style="margin-bottom:15px;">
+        <div class="custom-file">
+            <input asp-for="CourseImg" class="custom-file-input" id="customFile">
+            <label class="custom-file-label" for="customFile">course image</label>
+        </div>
+        <span asp-validation-for="CourseImg" class="text-danger"></span>
+    </div>
+
+    -->
+        <input type="submit" class="btn Details-btn" asp-route-stid=@ViewBag.stid value="Create" />
+        <a asp-controller="Student" asp-action="Home" asp-route-id=@ViewBag.stid class="btn edit-btn">Cancel</a>
+    </form>
+
+</body>
+

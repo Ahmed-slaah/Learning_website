@@ -1,0 +1,123 @@
+﻿@using lab1.Models
+@model Student;
+@{
+    ViewData["Title"] = "Details";
+     
+}
+
+<link href="~/css/StudentCard.css" rel="stylesheet" />
+<style>
+    body {
+        background-color: #f0f2f5;
+    }
+</style>
+<body>
+
+   
+
+    <div class="row py-5 px-4">
+        <div class="col-md-12 mx-auto">
+            <!-- Profile widget -->
+            <div class="bg-white shadow rounded overflow-hidden">
+                <div class="px-4 pt-0 pb-4 cover">
+                    <div class="media align-items-end profile-head">
+                        <div class="profile mr-3">
+                            @if (Model.ProfileImg != null)
+                            {
+                                <img src="~/images/@Model.ProfileImg" alt="..." width="130" class="rounded mb-2 img-thumbnail">
+                            }
+                            else
+                            {
+                                if (Model.gender == "Male")
+                                {
+                                    <img src="~/images/default-male.jpg" alt="..." width="130" class="rounded mb-2 img-thumbnail">
+
+                                }
+                                else if (Model.gender == "Female")
+                                {
+                                    <img src="~/images/default-female.png" alt="..." width="130" class="rounded mb-2 img-thumbnail">
+                                }
+                                else
+                                {
+                                    <img src="~/images/default-male.jpg" alt="..." width="130" class="rounded mb-2 img-thumbnail">
+                                }
+                            }
+
+                            @Html.ActionLink("Edit profile", "Edit", "Student", new { id = Model.StudentId }, new { @class = "btn  btn-sm btn-block edit-btn" })
+                        </div>
+                        <div class="media-body mb-5 text-white">
+                            <h4 class="mt-0 mb-0">@Model.FirstName @Model.LastName</h4>
+                            <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2"></i>@Model.Country, @Model.City</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-light p-4 d-flex justify-content-end text-center">
+                    <ul class="list-inline mb-0">
+
+                        <li class="list-inline-item">
+                            <h5 class="font-weight-bold mb-0 d-block">@ViewBag.count</h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Courses</small>
+                        </li>
+                        <li class="list-inline-item">
+                            @Html.ActionLink("Home", "Home", "Student", new { id = Model.StudentId }, new { @class = "btn  btn-sm btn-block edit-btn" })
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="px-4 py-3">
+                    <h5 class="mb-0">About</h5>
+                    <div class="p-4 rounded shadow-sm about">
+                        <p>@Model.Email</p>
+                        <p>@Model.gender</p>
+                        <p>@Model.Age</p>
+                    </div>
+                </div>
+            </div>
+
+            <!--Courses Section-->
+
+            <section id="team" class="pb-5">
+                <div class="container">
+                    <h6 class="section-title h1">@Model.FirstName Courses</h6>
+                    <div class="row">
+                        <!-- Team member -->
+
+                        @foreach (var course in ViewBag.courses)
+                        {
+                            <div class="col-xs-12 col-sm-6 col-md-4">
+                                <div class="image-flip">
+                                    <div class="mainflip flip-0">
+                                        <div class="frontside">
+                                            <div class="card">
+                                                <div class="card-body text-center" style="position:relative">
+                                                    <img id="courseImg" src="~/images/single.jpg" alt="card image">
+                                                    <h4 class="card-title">@course.Name</h4>
+                                                    <div class="course-data">
+                                                        <p class="card-text " id="course-cost">@course.Cost &#36;</p>
+                                                        <p class="card-text course-desc">@course.Description</p>
+                                                        @foreach (var topic in ViewBag.courseId)
+                                                        {
+                                                            <p class="badge badge-light">@topic.Name</p>
+                                                        }
+                                                    </div>
+
+                                                    <div class="card-footer row" style="justify-content:space-between;">
+                                                        @Html.ActionLink("Details", "Details", "Course", new { id = @course.CourseID }, new { @class = "btn Details-btn" })
+                                                        <a class="btn Delete-btn" asp-action="DeleteCourse" asp-controller="Student" asp-route-id="@course.CourseID" asp-route-stid="@Model.StudentId">Leave</a>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end-->
+                        }
+
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>

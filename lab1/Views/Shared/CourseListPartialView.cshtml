@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Course>
+
+@foreach (var course in Model)
+{
+    <div class="post action-card col-xl-6 col-lg-6 col-md-12 col-xs-12 m-b40"  >
+        <div class="recent-news" style="background-color:#fff;padding:15px;">
+            <div class="action-box">
+                <img src="~/images/single.jpg" alt="">
+            </div>
+            <div class="info-bx">
+
+                <h4 class="post-title" style="text-align:center;color:#007b5e;"><a>@course.Name</a></h4>
+                <span style="color: #007b5e;" class="badge badge-light">&#36;	 @course.Cost</span>
+                <p style="overflow: hidden;text-overflow: ellipsis;height:40px;max-width:250px;white-space:nowrap;">@course.Description</p>
+                <div class="post-extra">
+                    <a class="btn-link" asp-action="Details" asp-controller="Course" asp-route-id="@course.CourseID" asp-route-stId="@ViewBag.stId">READ MORE</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
